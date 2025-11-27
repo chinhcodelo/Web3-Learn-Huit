@@ -114,7 +114,8 @@ Truy cập: `http://localhost:3000`
 
 | Marketplace (Mua bài thi) | Creator Studio (Đăng bài & AI Check) |
 | :---: | :---: |
-| <img src="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" width="200"/><br><a href="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" target="_blank">Mở full-size</a> |  |
+| <img src="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" width="400"/> |  |
+| <img src="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" width="400"/> |  |
 
 | Doing Test (Làm bài) | Profile & History |
 | :---: | :---: |
@@ -140,6 +141,7 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
 
 
