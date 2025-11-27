@@ -112,8 +112,9 @@ Truy cập: `http://localhost:3000`
 
 ## 📸 Hình ảnh Demo (Screenshots)
 
-| Marketplace (Mua bài thi) 
-https://github.com/chinhcodelo/learn2earn-web3/blob/main/frontend/8ebcc37fbbdc37826ecd.jpg
+
+| Marketplace (Mua bài thi) (https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg)
+
 | Creator Studio (Đăng bài & AI Check) 
 |
 ![Uploading 91b2836ffbcc77922edd.jpg…]()
@@ -143,6 +144,7 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
 
 
