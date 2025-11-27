@@ -2,17 +2,15 @@ import React, { useState, useContext, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { ethers } from 'ethers';
 import { Web3Context } from '../contexts/Web3Context';
-import { UIContext } from '../App'; 
+import { UIContext } from '../App';
+import { API_URL } from '../config/apiConfig'; // Import config
 
-// --- CẤU HÌNH ĐỊA CHỈ VÍ NHẬN TIỀN PHÍ ĐĂNG BÀI ---
-// Bạn hãy thay địa chỉ này bằng địa chỉ ví phụ của bạn hoặc giữ nguyên để test
 const TREASURY_ADDRESS = "0xcc1634399db720613c6756c7cdc7164f85791aeb"; 
 
 const CreatorStudio = () => {
   const { currentAccount } = useContext(Web3Context);
   const { showToast } = useContext(UIContext);
   
-  // State quản lý Form nhiều câu hỏi
   const [formData, setFormData] = useState({
     title: "",
     topic: "Grammar",
@@ -20,12 +18,10 @@ const CreatorStudio = () => {
     questions: [{ question_content: "", options: ["", "", "", ""], correct_option_index: 0 }]
   });
   
-  // State quản lý AI Log & Loading
   const [loading, setLoading] = useState(false);
   const [logs, setLogs] = useState([]);
   const logEndRef = useRef(null);
 
-  // Hàm cuộn log xuống dưới cùng
   useEffect(() => {
     logEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [logs]);
@@ -35,7 +31,6 @@ const CreatorStudio = () => {
     setLogs(prev => [...prev, { time, msg, type }]);
   };
 
-  // --- CÁC HÀM XỬ LÝ FORM ---
   const handleQuestionChange = (index, field, value) => {
     const newQuestions = [...formData.questions];
     newQuestions[index][field] = value;
@@ -62,17 +57,15 @@ const CreatorStudio = () => {
     setFormData({ ...formData, questions: newQuestions });
   };
 
-  // --- HÀM SUBMIT ---
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!currentAccount) return showToast('error', "Vui lòng kết nối ví!");
 
     setLoading(true);
-    setLogs([]); // Reset log cũ
+    setLogs([]); 
     addLog("🚀 Bắt đầu quy trình đăng bài...", "info");
 
     try {
-      // 1. THANH TOÁN PHÍ
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const listingFee = ethers.parseEther("0.0005"); 
@@ -80,7 +73,7 @@ const CreatorStudio = () => {
       addLog(`💸 Vui lòng thanh toán phí đăng bài: 0.0005 ETH`, "warning");
       
       const tx = await signer.sendTransaction({
-        to: TREASURY_ADDRESS, // Đã sửa lỗi: Dùng địa chỉ thật
+        to: TREASURY_ADDRESS,
         value: listingFee
       });
       
@@ -88,8 +81,7 @@ const CreatorStudio = () => {
       await tx.wait();
       addLog(`✅ Thanh toán thành công! Hash: ${tx.hash.slice(0, 10)}...`, "success");
 
-      // Log DB
-      await axios.post('http://localhost:5000/api/transaction/log', {
+      await axios.post(`${API_URL}/api/transaction/log`, {
           user_address: currentAccount,
           type: 'CREATE_FEE',
           amount: -0.0005,
@@ -97,10 +89,9 @@ const CreatorStudio = () => {
           description: `Phí đăng: ${formData.title}`
       });
 
-      // 2. GỬI AI DUYỆT
       addLog("🤖 Đang gửi dữ liệu cho AI Gemini kiểm duyệt...", "info");
       
-      const res = await axios.post('http://localhost:5000/api/exercises/create', {
+      const res = await axios.post(`${API_URL}/api/exercises/create`, {
         ...formData,
         creator_address: currentAccount,
         tx_hash: tx.hash
@@ -131,14 +122,12 @@ const CreatorStudio = () => {
     <div className="pt-24 pb-10 px-6 max-w-7xl mx-auto min-h-screen">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        {/* CỘT TRÁI: FORM NHẬP LIỆU (CHIẾM 2 PHẦN) */}
         <div className="lg:col-span-2">
           <div className="glass-panel p-8">
             <h2 className="text-3xl font-heading font-bold text-white mb-2">Creator Studio</h2>
             <p className="text-gray-400 mb-6">Soạn thảo đề thi (Tối đa 20 câu)</p>
             
             <form onSubmit={onSubmit} className="space-y-6">
-              {/* Thông tin chung */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="text-gray-300 text-sm font-bold mb-2 block">Tên Bài Thi</label>
@@ -177,7 +166,6 @@ const CreatorStudio = () => {
 
               <hr className="border-white/10 my-6"/>
 
-              {/* Danh sách câu hỏi */}
               <div className="space-y-6">
                 {formData.questions.map((q, qIdx) => (
                   <div key={qIdx} className="bg-white/5 p-6 rounded-2xl border border-white/10 relative group hover:border-indigo-500/50 transition-colors">
@@ -242,7 +230,6 @@ const CreatorStudio = () => {
           </div>
         </div>
 
-        {/* CỘT PHẢI: AI CONSOLE LOG (ĐÃ KHÔI PHỤC) */}
         <div className="lg:col-span-1">
           <div className="glass-panel p-6 border-l-4 border-indigo-500 sticky top-24 h-[calc(100vh-150px)] flex flex-col">
             <div className="flex justify-between items-center mb-6">
@@ -253,7 +240,6 @@ const CreatorStudio = () => {
               </div>
             </div>
             
-            {/* Màn hình Log */}
             <div className="flex-grow bg-black/40 rounded-xl p-4 overflow-y-auto font-mono text-xs md:text-sm border border-white/5 shadow-inner custom-scrollbar">
               {logs.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-gray-500 opacity-50">
@@ -281,7 +267,6 @@ const CreatorStudio = () => {
               <div ref={logEndRef} />
             </div>
 
-            {/* Trạng thái tóm tắt */}
             <div className="mt-4 p-4 rounded-xl bg-white/5 border border-white/10">
               <p className="text-xs text-gray-400 uppercase font-bold mb-1">Status</p>
               <p className={`font-bold ${
