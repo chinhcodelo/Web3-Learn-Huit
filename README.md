@@ -6,10 +6,39 @@
 > 
 > **Trường:** Đại học Công Thương TP.HCM (HUIT)
 <p align="center">
-  <a href="https://web3-learn-huit.vercel.app" target="_blank" style="padding: 0.6rem 1.2rem; background:#0d6efd; color:white; text-decoration:none; border-radius:8px; font-weight:600;">
+  <a href="https://web3-learn-huit.vercel.app" target="_blank" class="rainbow-btn">
     Xem Demo Web
   </a>
 </p>
+
+<style>
+  .rainbow-btn {
+    font-size: 1.5rem; /* chữ lớn */
+    font-weight: 700;
+    padding: 1rem 2rem; /* nút to */
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 1400% 1400%;
+    animation: rainbow 4s ease infinite;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+
+  .rainbow-btn:hover {
+    transform: scale(1.1);
+  }
+
+  @keyframes rainbow {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+</style>
+
 
 -----
 
@@ -148,6 +177,7 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
 
 
