@@ -112,13 +112,9 @@ Truy cập: `http://localhost:3000`
 
 ## 📸 Hình ảnh Demo (Screenshots)
 
-
-| Marketplace (Mua bài thi) | Creator Studio (Đăng bài & AI Check) 
-|     <p>
-      <a class="btn" href="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" target="_blank" rel="noopener">Mở ảnh full-size</a>
-    </p> | :---: |
-
-
+| Marketplace (Mua bài thi) | Creator Studio (Đăng bài & AI Check) |
+| :---: | :---: |
+| <img src="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" width="200"/><br><a href="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" target="_blank">Mở full-size</a> |  |
 
 | Doing Test (Làm bài) | Profile & History |
 | :---: | :---: |
