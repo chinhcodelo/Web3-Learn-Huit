@@ -5,6 +5,11 @@
 > **Sinh viên thực hiện:** **Hồ Ngọc Chính**
 > 
 > **Trường:** Đại học Công Thương TP.HCM (HUIT)
+<p align="center">
+  <a href="https://web3-learn-huit.vercel.app" target="_blank" style="padding: 0.6rem 1.2rem; background:#0d6efd; color:white; text-decoration:none; border-radius:8px; font-weight:600;">
+    Xem Demo Web
+  </a>
+</p>
 
 -----
 
@@ -143,6 +148,7 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
 
 
