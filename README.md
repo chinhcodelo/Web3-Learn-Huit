@@ -1,5 +1,3 @@
-Dưới đây là mẫu file **README.md** chuyên nghiệp, đầy đủ và ấn tượng dành cho Đồ án Tốt nghiệp của bạn tại HUIT. Bạn hãy copy nội dung này vào file `README.md` trong thư mục gốc của dự án trên GitHub nhé.
-
 -----
 
 # 🎓 Web3 Learn-to-Earn Platform - Đồ Án Tốt Nghiệp HUIT
@@ -144,3 +142,4 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
