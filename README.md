@@ -114,8 +114,7 @@ Truy cập: `http://localhost:3000`
 
 | Marketplace (Mua bài thi) | Creator Studio (Đăng bài & AI Check) |
 | :---: | :---: |
-| <img src="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" width="400"/> |  |
-| <img src="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" width="400"/> |  |
+| <img src="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" width="400"/> | <img src="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" width="400"/> |
 
 | Doing Test (Làm bài) | Profile & History |
 | :---: | :---: |
@@ -129,6 +128,7 @@ Truy cập: `http://localhost:3000`
 3.  **Hệ thống:** Chấm điểm tự động. Nếu đúng \> 50% -\> Ví hệ thống tự động chuyển thưởng (0.0002 ETH) cho Learner.
    Sơ Đồ Erd
 | :---: |
+| <img src="https://github.com/chinhcodelo/learn2earn-web3/blob/main/frontend/7da0276b59c8d5968cd9.jpg" width="400"/> |  |
 -----
 
 ## 🤝 Đóng góp
@@ -141,6 +141,7 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
 
 
