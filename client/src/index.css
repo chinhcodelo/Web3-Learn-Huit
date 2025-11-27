@@ -1,0 +1,73 @@
+/* 1. Kích hoạt Tailwind (BẮT BUỘC PHẢI CÓ 3 DÒNG NÀY Ở ĐẦU) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2. Font chữ & Cấu hình nền */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg-dark: #0f172a; /* Slate 900 */
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  /* Nền tối Cyberpunk chuyên nghiệp */
+  background-color: var(--bg-dark); 
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+  background-attachment: fixed; /* Giữ nền cố định khi cuộn */
+  color: #ffffff;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3. Hiệu ứng Glassmorphism (Kính mờ) */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05); /* Nền cực mờ */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Nút bấm Gradient */
+.btn-gradient {
+  background: linear-gradient(90deg, #4f46e5 0%, #ec4899 100%);
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(236, 72, 153, 0.5);
+}
+
+/* 5. Scrollbar tùy chỉnh (Cho đẹp mắt) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* 6. Form Styles (Ghi đè mặc định của RJSF để đẹp hơn) */
+input, textarea, select {
+  @apply bg-slate-800 border border-slate-700 text-white rounded-lg p-3 w-full focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all;
+}
+label {
+  @apply text-slate-300 text-sm font-semibold mb-1 block uppercase tracking-wide;
+}
