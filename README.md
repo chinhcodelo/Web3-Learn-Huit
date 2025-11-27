@@ -115,8 +115,8 @@ Truy cập: `http://localhost:3000`
 ## 📸 Hình ảnh Demo (Screenshots)
 
 | Marketplace (Mua bài thi) | Creator Studio (Đăng bài & AI Check) |
-| :---: | :---: |
-|  |  |
+![Uploading 91b2836ffbcc77922edd.jpg…]()
+
 
 | Doing Test (Làm bài) | Profile & History |
 | :---: | :---: |
@@ -142,4 +142,5 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
