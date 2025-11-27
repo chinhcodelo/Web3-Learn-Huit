@@ -2,12 +2,13 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Web3Context } from '../contexts/Web3Context';
-import { UIContext } from '../App'; // 1. Import UIContext
+import { UIContext } from '../App';
+import { API_URL } from '../config/apiConfig'; // Import từ config
 
 const DoingTest = () => {
   const { id } = useParams();
   const { currentAccount } = useContext(Web3Context);
-  const { showToast } = useContext(UIContext); // 2. Lấy hàm showToast
+  const { showToast } = useContext(UIContext);
   const navigate = useNavigate();
 
   const [exam, setExam] = useState(null);
@@ -24,7 +25,7 @@ const DoingTest = () => {
 
     const fetchExam = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/exercise/${id}`);
+        const res = await axios.get(`${API_URL}/api/exercise/${id}`);
         setExam(res.data);
       } catch (err) {
         console.error(err);
@@ -36,7 +37,7 @@ const DoingTest = () => {
     };
 
     fetchExam();
-  }, [id, currentAccount, navigate]);
+  }, [id, currentAccount, navigate, showToast]);
 
   const handleSelect = (qIndex, oIndex) => {
     if (score !== null) return; 
@@ -69,7 +70,7 @@ const DoingTest = () => {
         try {
             showToast('info', "Đang chấm điểm và gửi thưởng (nếu đậu)...");
             
-            const res = await axios.post('http://localhost:5000/api/transaction/submit-exam', {
+            const res = await axios.post(`${API_URL}/api/transaction/submit-exam`, {
                 user_address: currentAccount,
                 exercise_id: id,
                 score: correctCount,
@@ -78,7 +79,6 @@ const DoingTest = () => {
             });
 
             if (res.data.success) {
-                // Kiểm tra nội dung để hiện màu Toast phù hợp
                 if(res.data.message.includes("Chúc mừng")) {
                     showToast('success', res.data.message);
                 } else {
@@ -99,8 +99,6 @@ const DoingTest = () => {
 
   return (
     <div className="pt-24 pb-10 px-4 max-w-4xl mx-auto min-h-screen">
-      
-      {/* Header */}
       <div className="glass-panel p-8 mb-8 text-center relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
         <span className="bg-blue-900 text-blue-300 text-xs font-bold px-3 py-1 rounded-full uppercase mb-4 inline-block">
@@ -109,7 +107,6 @@ const DoingTest = () => {
         <h1 className="text-3xl font-heading font-bold text-white mb-2">{exam.title}</h1>
         <p className="text-gray-400 text-sm">Người tạo: {exam.creator_address}</p>
         
-        {/* Kết quả */}
         {score && (
             <div className="mt-6 p-6 bg-emerald-900/30 border border-emerald-500/50 rounded-2xl animate-fade-in-up">
                 <h3 className="text-2xl font-bold text-emerald-400 mb-2">Kết Quả: {score.correct}/{score.total}</h3>
@@ -124,7 +121,6 @@ const DoingTest = () => {
         )}
       </div>
 
-      {/* Danh sách câu hỏi */}
       <div className="space-y-6">
         {exam.questions.map((q, qIdx) => (
             <div key={qIdx} className="glass-panel p-6 border-l-4 border-indigo-500/50">
