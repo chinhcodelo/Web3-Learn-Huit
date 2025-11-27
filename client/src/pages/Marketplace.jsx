@@ -3,13 +3,14 @@ import axios from 'axios';
 import { ethers } from 'ethers';
 import { Web3Context } from '../contexts/Web3Context';
 import { useNavigate } from 'react-router-dom';
-import { UIContext } from '../App'; // 1. Import UIContext
+import { UIContext } from '../App';
+import { API_URL } from '../config/apiConfig'; // Import từ config
 
 const Marketplace = () => {
   const [exercises, setExercises] = useState([]);
   const [loading, setLoading] = useState(true);
   const { currentAccount } = useContext(Web3Context);
-  const { showToast } = useContext(UIContext); // 2. Lấy hàm showToast
+  const { showToast } = useContext(UIContext);
   const navigate = useNavigate();
 
   // --- CẤU HÌNH PHÂN TRANG ---
@@ -19,7 +20,7 @@ const Marketplace = () => {
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/exercises');
+        const res = await axios.get(`${API_URL}/api/exercises`);
         setExercises(res.data);
       } catch (err) {
         console.error(err);
@@ -29,7 +30,7 @@ const Marketplace = () => {
       }
     };
     fetchExercises();
-  }, []);
+  }, [showToast]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -46,7 +47,6 @@ const Marketplace = () => {
         const signer = await provider.getSigner();
         const price = ethers.parseEther(ex.price.toString());
 
-        // Dùng confirm mặc định của trình duyệt cho hành động quan trọng
         if (!window.confirm(`Xác nhận mua bài thi "${ex.title}" với giá ${ex.price} ETH?`)) return;
 
         showToast('info', "Đang mở MetaMask để thanh toán...");
@@ -59,7 +59,7 @@ const Marketplace = () => {
         showToast('info', "Giao dịch đã gửi! Đang chờ xác nhận...");
         await tx.wait();
 
-        await axios.post('http://localhost:5000/api/transaction/log', {
+        await axios.post(`${API_URL}/api/transaction/log`, {
             user_address: currentAccount,
             type: 'BUY_EXERCISE',
             amount: -ex.price,
@@ -69,7 +69,6 @@ const Marketplace = () => {
 
         showToast('success', "Mua thành công! Đang chuyển trang...");
         
-        // Delay 1 xíu để người dùng đọc thông báo
         setTimeout(() => {
             navigate(`/test/${ex._id}`); 
         }, 1500);
