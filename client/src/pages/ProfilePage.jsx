@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Web3Context } from '../contexts/Web3Context';
 import axios from 'axios';
+import { API_URL } from '../config/apiConfig';
 
 const ProfilePage = () => {
   const { currentAccount, balance } = useContext(Web3Context);
@@ -10,7 +11,7 @@ const ProfilePage = () => {
   useEffect(() => {
     if (currentAccount) {
       setLoading(true);
-      axios.get(`http://localhost:5000/api/user/${currentAccount}/history`)
+      axios.get(`${API_URL}/api/user/${currentAccount}/history`)
         .then(res => setHistory(res.data))
         .catch(err => console.error(err))
         .finally(() => setLoading(false));
@@ -25,7 +26,6 @@ const ProfilePage = () => {
 
   return (
     <div className="pt-28 pb-10 px-6 max-w-5xl mx-auto animate-fade-in">
-      {/* Header Card: Thông tin ví & Số dư */}
       <div className="glass-panel p-8 md:p-10 mb-10 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-600/20 blur-[100px] rounded-full pointer-events-none"></div>
         
@@ -53,7 +53,6 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      {/* History Table: Lịch sử biến động số dư */}
       <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
         <span className="w-1 h-6 bg-pink-500 rounded-full block"></span>
         Lịch sử biến động số dư
@@ -78,18 +77,15 @@ const ProfilePage = () => {
               </thead>
               <tbody className="divide-y divide-white/5">
                 {history.map((tx, idx) => {
-                  // Xử lý số liệu an toàn (Fallback nếu null/undefined)
                   const amount = tx.amount ? parseFloat(tx.amount) : 0;
                   const type = tx.type || 'UNKNOWN';
 
                   return (
                     <tr key={idx} className="hover:bg-white/5 transition-colors">
-                      {/* Cột 1: Thời gian */}
                       <td className="p-5 text-sm text-gray-400 font-mono">
                         {new Date(tx.timestamp).toLocaleString('vi-VN')}
                       </td>
 
-                      {/* Cột 2: Loại hoạt động (Đã thêm SELL_EXERCISE) */}
                       <td className="p-5 text-sm font-bold text-white">
                           {type === 'BUY_EXERCISE' && <span className="text-blue-400">🛒 Mua bài thi</span>}
                           {type === 'SELL_EXERCISE' && <span className="text-purple-400">💰 Bán bài thi</span>} 
@@ -97,23 +93,19 @@ const ProfilePage = () => {
                           {type === 'REWARD' && <span className="text-emerald-400">🎁 Nhận thưởng</span>}
                           {type === 'STAKE_LOSS' && <span className="text-red-400">💸 Mất cược</span>}
                           
-                          {/* Fallback cho các loại chưa định nghĩa */}
                           {!['BUY_EXERCISE', 'SELL_EXERCISE', 'CREATE_FEE', 'REWARD', 'STAKE_LOSS'].includes(type) && (
                             <span className="text-gray-500 uppercase">{type}</span>
                           )}
                       </td>
 
-                      {/* Cột 3: Chi tiết */}
                       <td className="p-5 text-sm text-gray-400 italic max-w-xs truncate">
                           {tx.description || (tx.exercise_id ? `Bài tập ID: ${tx.exercise_id._id || tx.exercise_id}` : 'Giao dịch hệ thống')}
                       </td>
 
-                      {/* Cột 4: Biến động */}
                       <td className={`p-5 text-sm font-bold text-right font-mono ${amount > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                           {amount > 0 ? '+' : ''}{amount} ETH
                       </td>
 
-                      {/* Cột 5: Link */}
                       <td className="p-5 text-right">
                           {tx.tx_hash && tx.tx_hash !== "NO_HASH" && tx.tx_hash !== "PREVIOUS_FEE_TX" ? (
                               <a 
