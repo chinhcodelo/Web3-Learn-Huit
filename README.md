@@ -1,8 +1,9 @@
 # 🎓 Web3 Learn-to-Earn Platform - Đồ Án Tốt Nghiệp HUIT
 
 > **Đề tài:** Lập trình Web3 chuyển đổi số cho trung tâm ngoại ngữ theo mô hình Learn-to-Earn.
+> 
 > **Sinh viên thực hiện:** **Hồ Ngọc Chính**
-> **Giảng viên hướng dẫn:** ThS. Trần Việt Hùng
+> 
 > **Trường:** Đại học Công Thương TP.HCM (HUIT)
 
 -----
@@ -142,6 +143,7 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
 
 
