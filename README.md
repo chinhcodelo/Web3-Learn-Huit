@@ -113,16 +113,15 @@ Truy cập: `http://localhost:3000`
 ## 📸 Hình ảnh Demo (Screenshots)
 
 
-| Marketplace (Mua bài thi) (https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg)
+| Marketplace (Mua bài thi) | Creator Studio (Đăng bài & AI Check) 
+|     <p>
+      <a class="btn" href="https://github.com/chinhcodelo/learn2earn-web3/raw/main/frontend/8ebcc37fbbdc37826ecd.jpg" target="_blank" rel="noopener">Mở ảnh full-size</a>
+    </p> | :---: |
 
-| Creator Studio (Đăng bài & AI Check) 
-|
-![Uploading 91b2836ffbcc77922edd.jpg…]()
 
 
 | Doing Test (Làm bài) | Profile & History |
 | :---: | :---: |
-|  |  |
 
 -----
 
@@ -131,7 +130,8 @@ Truy cập: `http://localhost:3000`
 1.  **Creator:** Kết nối ví -\> Soạn đề thi -\> Trả phí niêm yết (0.0005 ETH) -\> AI Duyệt -\> Lưu lên IPFS -\> Public lên chợ.
 2.  **Learner:** Kết nối ví -\> Xem chợ đề thi -\> Mua bài (Trả phí cho Creator) -\> Làm bài thi.
 3.  **Hệ thống:** Chấm điểm tự động. Nếu đúng \> 50% -\> Ví hệ thống tự động chuyển thưởng (0.0002 ETH) cho Learner.
-
+   Sơ Đồ Erd
+| :---: |
 -----
 
 ## 🤝 Đóng góp
@@ -144,6 +144,7 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
 
 
