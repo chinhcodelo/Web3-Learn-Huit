@@ -10,16 +10,14 @@
   <a href="https://web3-learn-huit.vercel.app" target="_blank"
      style="
        display: inline-block;
-       font-size: 1.5rem;
+       font-size: 1.8rem;
        font-weight: 700;
        padding: 1rem 2rem;
        border-radius: 12px;
        color: white;
        text-decoration: none;
        text-align: center;
-       background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
-       background-size: 1400% 1400%;
-       animation: rainbow 4s ease infinite;
+       background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
        transition: transform 0.2s;
      "
@@ -28,11 +26,6 @@
     Xem Demo Web
   </a>
 </p>
-
-<!-- Thêm keyframes ngay sau -->
-<style>
-@keyframes rainbow {
-  0% {background-position:
 
 -----
 
@@ -171,6 +164,7 @@ Dự án này là sản phẩm đồ án tốt nghiệp cá nhân. Mọi ý ki�
 -----
 
 *© 2025 Ho Ngoc Chinh - HUIT Graduation Project.*
+
 
 
 
